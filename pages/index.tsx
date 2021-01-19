@@ -1,65 +1,88 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Page from "../components/page";
+import { useMemo, useState } from "react";
+import useTimeout from "../hooks/useTimeout";
+import { extractTailwindBreakpoint, rand } from "../res/utils";
+import config from "../res/tailwind";
+import usewindowListener from "../hooks/useResizeListener";
+
+const textPool = {
+  left: [
+    {
+      short: "Fn",
+      long: "Functional",
+    },
+    {
+      short: "Pr",
+      long: "Practical",
+    },
+    {
+      short: "Op",
+      long: "Operative",
+    },
+  ],
+  right: [
+    {
+      short: "In",
+      long: "Innovative",
+    },
+    {
+      short: "Cr",
+      long: "Creative",
+    },
+    {
+      short: "Vs",
+      long: "Visionary",
+    },
+  ],
+};
 
 export default function Home() {
+  const [isVisible, setIsVisible] = useState(false);
+  useTimeout(() => setIsVisible(true), 500);
+  const windowWidth = usewindowListener(100);
+  console.log(windowWidth);
+
+  const { left, right } = useMemo(() => {
+    if (!windowWidth) return { left: [], right: [] };
+    if (windowWidth <= extractTailwindBreakpoint(config.theme.screens["sm"])) {
+      return {
+        left: textPool.left.map((_left) => _left.short),
+        right: textPool.right.map((_right) => _right.short),
+      };
+    }
+    return {
+      left: textPool.left.map((_left) => _left.long),
+      right: textPool.right.map((_right) => _right.long),
+    };
+  }, [config.theme.screens, windowWidth]);
+
+  const max = left.length - 1;
+  const [index, setIndex] = useState(rand(max));
+
+  useTimeout(() => {
+    setIndex((prevState) => {
+      let newState = rand(max);
+      while (newState === prevState) {
+        newState = rand(max);
+      }
+      return newState;
+    });
+  }, 5000);
+
+  console.log(index);
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <Page>
+      <div className="h-screen flex flex-col">
+        <div>
+          <div>
+            Michael Hodges
+            <hr />
+          </div>
+          <p>Fullstack Web Developer</p>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+      </div>
+    </Page>
+  );
 }

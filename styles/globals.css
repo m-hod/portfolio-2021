@@ -1,16 +1,27 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url("/images/so-white.png");
+    opacity: 0.5;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 300, transform 300;
 }
 
-* {
-  box-sizing: border-box;
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0px);
 }
