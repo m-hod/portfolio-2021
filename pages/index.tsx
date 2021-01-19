@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import useTimeout from "../hooks/useTimeout";
 import { extractTailwindBreakpoint, rand } from "../res/utils";
 import config from "../res/tailwind";
-import usewindowListener from "../hooks/useResizeListener";
+import useResizeListener from "../hooks/useResizeListener";
 
 const textPool = {
   left: [
@@ -40,7 +40,7 @@ const textPool = {
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   useTimeout(() => setIsVisible(true), 500);
-  const windowWidth = usewindowListener(100);
+  const { width: windowWidth } = useResizeListener(100);
   console.log(windowWidth);
 
   const { left, right } = useMemo(() => {

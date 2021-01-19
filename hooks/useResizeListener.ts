@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import useDebounce from "./useDebounce";
 
-export default function usewindowListener(debounce?: number) {
-  const [windowWidth, setWindowWidth] = useState(0);
-  const debouncedWindowWidth = useDebounce(windowWidth, debounce || 50);
+export default function useResizeListener(debounce?: number) {
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
+  const debouncedDimensions = useDebounce(dimensions, debounce || 50);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     function updateWindowWidth() {
-      setWindowWidth(window.innerWidth);
+      setDimensions({ width: window.innerWidth, height: window.innerHeight });
     }
     window.addEventListener("resize", updateWindowWidth);
     return () => {
@@ -16,5 +19,5 @@ export default function usewindowListener(debounce?: number) {
     };
   }, []);
 
-  return debouncedWindowWidth;
+  return debouncedDimensions;
 }

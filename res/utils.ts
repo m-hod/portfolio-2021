@@ -1,3 +1,7 @@
+/**
+ * Get a random number within a range of 0 to max
+ * @param max
+ */
 export function rand(max: number) {
   return Math.floor(Math.random() * Math.floor(max));
 }
