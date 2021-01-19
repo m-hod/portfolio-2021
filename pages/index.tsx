@@ -1,38 +1,37 @@
-import Head from "next/head";
-import Page from "../components/page";
-import { useMemo, useState } from "react";
-import useTimeout from "../hooks/useTimeout";
-import { extractTailwindBreakpoint, rand } from "../res/utils";
-import config from "../res/tailwind";
-import useResizeListener from "../hooks/useResizeListener";
+import Page from '../components/page';
+import { useMemo, useState } from 'react';
+import useTimeout from '../hooks/useTimeout';
+import { extractTailwindBreakpoint, rand } from '../res/utils';
+import config from '../res/tailwind';
+import useResizeListener from '../hooks/useResizeListener';
 
 const textPool = {
   left: [
     {
-      short: "Fn",
-      long: "Functional",
+      short: 'Fn',
+      long: 'Functional',
     },
     {
-      short: "Pr",
-      long: "Practical",
+      short: 'Pr',
+      long: 'Practical',
     },
     {
-      short: "Op",
-      long: "Operative",
+      short: 'Op',
+      long: 'Operative',
     },
   ],
   right: [
     {
-      short: "In",
-      long: "Innovative",
+      short: 'In',
+      long: 'Innovative',
     },
     {
-      short: "Cr",
-      long: "Creative",
+      short: 'Cr',
+      long: 'Creative',
     },
     {
-      short: "Vs",
-      long: "Visionary",
+      short: 'Vs',
+      long: 'Visionary',
     },
   ],
 };
@@ -45,7 +44,7 @@ export default function Home() {
 
   const { left, right } = useMemo(() => {
     if (!windowWidth) return { left: [], right: [] };
-    if (windowWidth <= extractTailwindBreakpoint(config.theme.screens["sm"])) {
+    if (windowWidth <= extractTailwindBreakpoint(config.theme.screens['sm'])) {
       return {
         left: textPool.left.map((_left) => _left.short),
         right: textPool.right.map((_right) => _right.short),
