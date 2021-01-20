@@ -1,8 +1,4 @@
 @tailwind base;
-
-/* Write your own custom base styles here */
-// @import './_base.scss';
-
 @tailwind components;
 @tailwind utilities;
 
@@ -18,13 +14,4 @@
   }
 }
 
-/* Animations */
-.fade-in {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 300, transform 300;
-  &-visible {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
+@import './_animations.scss';
