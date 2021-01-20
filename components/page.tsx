@@ -1,5 +1,5 @@
-import React from "react";
-import Header from "./header";
+import React from 'react';
+import Header from './header';
 
 function Page({ children }: { children: React.ReactNode }) {
   return (

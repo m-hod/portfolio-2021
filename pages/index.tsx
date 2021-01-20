@@ -1,9 +1,9 @@
-import Page from '../components/page';
+import Page from 'components/page';
 import { useMemo, useState } from 'react';
-import useTimeout from '../hooks/useTimeout';
-import { extractTailwindBreakpoint, rand } from '../res/utils';
-import config from '../res/tailwind';
-import useResizeListener from '../hooks/useResizeListener';
+import useTimeout from 'hooks/useTimeout';
+import { extractTailwindBreakpoint, rand } from 'res/utils';
+import config from 'res/tailwind';
+import useResizeListener from 'hooks/useResizeListener';
 
 const textPool = {
   left: [
