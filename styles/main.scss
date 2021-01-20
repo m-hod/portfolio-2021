@@ -1,15 +1,19 @@
 @tailwind base;
+
+/* Write your own custom base styles here */
+// @import './_base.scss';
+
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body:before {
-    content: "";
+    content: '';
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-image: url("/images/so-white.png");
+    background-image: url('/images/so-white.png');
     opacity: 0.5;
   }
 }
@@ -19,9 +23,8 @@
   opacity: 0;
   transform: translateY(25px);
   transition: opacity 300, transform 300;
-}
-
-.fade-in-visible {
-  opacity: 1;
-  transform: translateY(0px);
+  &-visible {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
