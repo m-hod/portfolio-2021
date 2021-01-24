@@ -4,37 +4,7 @@ import useTimeout from 'hooks/useTimeout';
 import { extractTailwindBreakpoint, rand } from 'res/utils';
 import config from 'res/tailwind';
 import useResizeListener from 'hooks/useResizeListener';
-
-const textPool = {
-  left: [
-    {
-      short: 'Fn',
-      long: 'Functional',
-    },
-    {
-      short: 'Pr',
-      long: 'Practical',
-    },
-    {
-      short: 'Op',
-      long: 'Operative',
-    },
-  ],
-  right: [
-    {
-      short: 'In',
-      long: 'Innovative',
-    },
-    {
-      short: 'Cr',
-      long: 'Creative',
-    },
-    {
-      short: 'Vs',
-      long: 'Visionary',
-    },
-  ],
-};
+import { textPool } from 'res/data';
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -68,8 +38,6 @@ export default function Home() {
       return newState;
     });
   }, 5000);
-
-  console.log(index);
 
   return (
     <Page>

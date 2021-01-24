@@ -11,3 +11,34 @@ export const projects: Project[] = [
     type: 'web',
   },
 ];
+
+export const textPool = {
+  left: [
+    {
+      short: 'Fn',
+      long: 'Functional',
+    },
+    {
+      short: 'Pr',
+      long: 'Practical',
+    },
+    {
+      short: 'Op',
+      long: 'Operative',
+    },
+  ],
+  right: [
+    {
+      short: 'In',
+      long: 'Innovative',
+    },
+    {
+      short: 'Cr',
+      long: 'Creative',
+    },
+    {
+      short: 'Vs',
+      long: 'Visionary',
+    },
+  ],
+};
