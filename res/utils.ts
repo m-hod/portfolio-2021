@@ -1,9 +1,5 @@
-/**
- * Get a random number within a range of 0 to max
- * @param max
- */
-export function rand(max: number) {
-  return Math.floor(Math.random() * Math.floor(max));
+export function rand(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 /**
@@ -11,5 +7,5 @@ export function rand(max: number) {
  * eg: "768px"
  */
 export function extractTailwindBreakpoint(breakpoint: string) {
-  return Number(breakpoint.slice(0, breakpoint.indexOf("px")));
+  return Number(breakpoint.slice(0, breakpoint.indexOf('px')));
 }

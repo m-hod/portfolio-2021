@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-export default function useTimeout(action: Function, delay: number) {
+export default function useTimeout(callback: () => void, delay: number) {
   useEffect(() => {
     const timeout = setTimeout(() => {
-      action();
+      callback();
     }, delay);
     return () => {
       clearTimeout(timeout);
     };
-  }, [action, delay]);
+  }, []);
 }
