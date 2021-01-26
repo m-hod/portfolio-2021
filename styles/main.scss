@@ -3,14 +3,32 @@
 @tailwind utilities;
 
 @layer base {
-  body:before {
-    content: '';
-    position: absolute;
-    width: 100%;
+  html {
+    scrollbar-color: #1e1e1e #fafafa;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #fafafa;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #1e1e1e;
+      border: 1px solid #fafafa;
+    }
+  }
+  body {
+    position: relative;
     height: 100%;
-    z-index: -1;
-    background-image: url('/images/so-white.png');
-    opacity: 0.5;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: url('/images/so-white.png');
+      opacity: 0.5;
+    }
   }
 }
 
