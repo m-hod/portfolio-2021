@@ -3,11 +3,12 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { extractTailwindBreakpoint, rand } from 'res/utils';
 import config from 'res/tailwind';
 import useResizeListener from 'hooks/useResizeListener';
-import { textPool } from 'res/data';
+import { projects, textPool } from 'res/data';
 import { ChevronDown } from 'react-feather';
 import IconButton from 'components/IconButton';
 import { CSSTransition } from 'react-transition-group';
 import clsx from 'clsx';
+import Card from 'components/Card';
 
 const titleInterval = 7500;
 const titleTimeout = titleInterval - 1000;
@@ -148,10 +149,12 @@ export default function Home() {
         </div>
       </div>
       <div
-        className="h-screen flex justify-center items-center"
+        className="h-screen flex justify-center items-center flex-wrap"
         ref={scrollRef}
       >
-        hi
+        {projects.map((_project) => (
+          <Card key={_project.id} {..._project} />
+        ))}
       </div>
     </Page>
   );
