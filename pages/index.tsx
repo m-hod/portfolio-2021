@@ -9,6 +9,7 @@ import IconButton from 'components/IconButton';
 import { CSSTransition } from 'react-transition-group';
 import clsx from 'clsx';
 import Card from 'components/Card';
+import classes from './index.module.scss';
 
 const titleInterval = 7500;
 const titleTimeout = titleInterval - 1000;
@@ -16,7 +17,9 @@ const titleTimeout = titleInterval - 1000;
 export default function Home() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [titleVisibility, setTitleVisibility] = useState(false);
+  const [dividerVisibility, setDividerVisiblity] = useState(false);
   const [subtitleVisibility, setSubtitleVisibility] = useState(false);
+  const [backgroundVisibility, setBackgroundVisibility] = useState(false);
 
   const { width: windowWidth } = useResizeListener(50);
 
@@ -39,9 +42,13 @@ export default function Home() {
 
   useEffect(() => {
     if (windowWidth) {
+      setDividerVisiblity(true);
       setTimeout(() => {
         setSubtitleVisibility(true);
       }, 1000);
+      setTimeout(() => {
+        setBackgroundVisibility(true);
+      }, 2250);
     }
   }, [windowWidth]);
 
@@ -82,7 +89,7 @@ export default function Home() {
 
   return (
     <Page>
-      <div className="h-screen flex flex-col justify-center items-center">
+      <div className="h-screen flex flex-col justify-center items-center relative">
         <div className="h-1/3" />
         <div className="h-1/3 w-full flex justify-center relative">
           <div className="absolute right-2/4 top-8 mr-8 md:mr-20">
@@ -97,7 +104,12 @@ export default function Home() {
               </h1>
             </CSSTransition>
           </div>
-          <div className="flex justify-center mx-8">
+          <div
+            className={clsx(
+              'flex justify-center mx-8 fade-in',
+              dividerVisibility && 'fade-in--visible'
+            )}
+          >
             <h1 className="text-8xl">|</h1>
           </div>
           <div className="absolute left-2/4 top-8 ml-8 md:ml-20">
@@ -116,8 +128,8 @@ export default function Home() {
         <div className="h-1/3 flex flex-col justify-between">
           <div
             className={clsx(
-              'h-3/6 flex flex-col align-center fade-in',
-              subtitleVisibility && 'fade-in--visible'
+              'h-3/6 flex flex-col align-center fade-and-slide-in',
+              subtitleVisibility && 'fade-and-slide-in--visible'
             )}
           >
             <h3 className="text-center font-serif text-2xl md:text-3xl border-b-2 border-black pb-1 mb-2">
@@ -146,6 +158,16 @@ export default function Home() {
               </button>
             </div>
           </div>
+        </div>
+        <div
+          className={clsx(
+            'absolute w-full h-full top-0 left-0 flex justify-center items-center opacity-25 p-5',
+            classes.backgroundFadeIn,
+            backgroundVisibility && classes.backgroundFadeInVisible
+          )}
+          style={{ zIndex: -1 }}
+        >
+          <img src="logo.png" style={{ maxHeight: '75%' }} />
         </div>
       </div>
       <div

@@ -1,0 +1,9 @@
+.backgroundFadeIn {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.9s ease-out;
+  &Visible {
+    opacity: 25%;
+    visibility: visible;
+  }
+}
