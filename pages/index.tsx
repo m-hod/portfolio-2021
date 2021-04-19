@@ -1,15 +1,16 @@
-import Page from 'components/page';
-import { useEffect, useMemo, useRef, useState } from 'react';
 import { extractTailwindBreakpoint, rand } from 'res/utils';
-import config from 'res/tailwind';
-import useResizeListener from 'hooks/useResizeListener';
 import { projects, textPool } from 'res/data';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
+import { CSSTransition } from 'react-transition-group';
+import Card from 'components/Card';
 import { ChevronDown } from 'react-feather';
 import IconButton from 'components/IconButton';
-import { CSSTransition } from 'react-transition-group';
-import clsx from 'clsx';
-import Card from 'components/Card';
+import Page from 'components/page';
 import classes from './index.module.scss';
+import clsx from 'clsx';
+import config from 'res/tailwind';
+import useResizeListener from 'hooks/useResizeListener';
 
 const titleInterval = 7500;
 const titleTimeout = titleInterval - 1000;
@@ -167,7 +168,7 @@ export default function Home() {
           )}
           style={{ zIndex: -1 }}
         >
-          <img src="logo.png" style={{ maxHeight: '75%' }} />
+          <img src="logo_grayscale.png" style={{ maxHeight: '75%' }} />
         </div>
       </div>
       <div
