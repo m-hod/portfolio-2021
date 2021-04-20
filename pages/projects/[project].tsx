@@ -2,6 +2,7 @@ import { DevicefulType, Project as ProjectType } from 'res/types';
 import React, { useEffect, useMemo, useState } from 'react';
 
 import Page from 'components/page';
+import classes from './project.module.scss';
 import { projects } from 'res/data';
 import useDeviceful from 'pages/projects/useDeviceful';
 import { useRouter } from 'next/router';
@@ -33,11 +34,21 @@ export default function Project() {
 
   return (
     <Page>
-      <div className="h-screen flex flex-col justify-between">
-        <div />
-        <div className="flex">
-          <DevicefulWrapper project={project} device={phone} type="phone" />
-          <DevicefulWrapper project={project} device={laptop} type="laptop" />
+      <div className="h-screen w-full">
+        <div className={classes.grid}>
+          <div className={classes.logo} />
+          <div className={classes.header} />
+          <div className={classes.content} />
+          <div className={classes.device}>
+            <div className="w-full h-full flex justify-end items-end">
+              {/* <DevicefulWrapper project={project} device={phone} type="phone" /> */}
+              <DevicefulWrapper
+                project={project}
+                device={laptop}
+                type="laptop"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </Page>
@@ -56,15 +67,7 @@ function DevicefulWrapper({
   return (
     <div
       id={`${type}-${project.id}`}
-      className="w-full"
-      style={{ height: '50vh' }}
-      onClick={() => {
-        if (device.isOpen) {
-          device.close();
-        } else {
-          device.open();
-        }
-      }}
+      className={'w-full h-screen-25 sm:h-screen-50 md:h-screen-75'}
       onMouseEnter={() => {
         if (device) {
           device.scroll({

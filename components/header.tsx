@@ -15,7 +15,7 @@ export default function Header() {
         <div>
           <button onClick={() => setIsExpanded(!isExpanded)}>
             <img
-              src="logo.png"
+              src="/logo.png"
               height="auto"
               width={50}
               className={`${

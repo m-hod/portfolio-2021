@@ -22,6 +22,7 @@ function useDeviceful(type: DevicefulType, project: Project | undefined) {
               screenshot: image.url,
               screenshotHeight: image.height,
               enableFloor: false,
+              // initialDeviceOrientation: 90,
             })
           );
         };
@@ -36,6 +37,11 @@ function useDeviceful(type: DevicefulType, project: Project | undefined) {
   useEffect(() => {
     if (device) {
       device.mount();
+      // device.open();
+      device.swivel({
+        to: -30, // in degrees
+        duration: 1000, // in milliseconds
+      });
       //   return () => {
       //     device.unmount();
       //   };
