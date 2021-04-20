@@ -3,27 +3,50 @@ import { Project } from './types';
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'Hopkins Marketing Group',
+    title: 'Aaron Hodges',
     type: 'web',
-    image: 'images/hmg.png',
     icon: 'images/vercel.svg',
     url: 'https://hopkinsmarketing.org',
+    images: {
+      web: {
+        url: '/images/a-hodges-web.png',
+        height: 4560,
+      },
+      mobile: {
+        url: '/images/a-hodges-mobile.png',
+        height: 6595,
+      },
+    },
   },
   {
     id: 2,
     title: 'Hopkins Marketing Group',
     type: 'web',
-    image: 'images/hmg.png',
     icon: 'images/vercel.svg',
     url: 'https://hopkinsmarketing.org',
+    images: {
+      web: {
+        url: '/images/a-hodges-web.png',
+        height: 4560,
+      },
+      mobile: {
+        url: '/images/a-hodges-mobile.png',
+        height: 6595,
+      },
+    },
   },
   {
     id: 3,
     title: 'Anipers',
     type: 'mobile',
-    image: 'images/hmg.png',
     icon: 'images/vercel.svg',
     url: 'https://hopkinsmarketing.org',
+    images: {
+      mobile: {
+        url: '/images/a-hodges-mobile.png',
+        height: 6595,
+      },
+    },
   },
 ];
 

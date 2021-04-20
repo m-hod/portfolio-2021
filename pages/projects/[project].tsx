@@ -1,7 +1,10 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useMemo } from 'react';
+import { DevicefulType, Project as ProjectType } from 'res/types';
+import React, { useEffect, useMemo, useState } from 'react';
+
 import Page from 'components/page';
 import { projects } from 'res/data';
+import useDeviceful from 'pages/projects/useDeviceful';
+import { useRouter } from 'next/router';
 
 export default function Project() {
   const router = useRouter();
@@ -12,7 +15,7 @@ export default function Project() {
         (_project) => _project.id === Number(router.query.project)
       );
     }
-    return null;
+    return undefined;
   }, [router.query]);
 
   useEffect(() => {
@@ -21,16 +24,8 @@ export default function Project() {
     }
   }, [router.query.project, project]);
 
-  // useEffect(() => {
-  //   async function importDeviceful() {
-  //     const Deviceful = (await import('deviceful')).default;
-  //     const device = new Deviceful({
-  //       device: 'laptop',
-  //     });
-  //     device.mount();
-  //   }
-  //   importDeviceful();
-  // }, []);
+  const laptop = useDeviceful('laptop', project);
+  const phone = useDeviceful('phone', project);
 
   if (!project) {
     return null;
@@ -38,7 +33,56 @@ export default function Project() {
 
   return (
     <Page>
-      <div id="deviceful" style={{ height: '100vh' }}></div>
+      <div className="h-screen flex flex-col justify-between">
+        <div />
+        <div className="flex">
+          <DevicefulWrapper project={project} device={phone} type="phone" />
+          <DevicefulWrapper project={project} device={laptop} type="laptop" />
+        </div>
+      </div>
     </Page>
+  );
+}
+
+function DevicefulWrapper({
+  device,
+  project,
+  type,
+}: {
+  device: any;
+  project: ProjectType;
+  type: DevicefulType;
+}) {
+  return (
+    <div
+      id={`${type}-${project.id}`}
+      className="w-full"
+      style={{ height: '50vh' }}
+      onClick={() => {
+        if (device.isOpen) {
+          device.close();
+        } else {
+          device.open();
+        }
+      }}
+      onMouseEnter={() => {
+        if (device) {
+          device.scroll({
+            direction: 'down', // 'up' or 'down'
+            duration: 5000, // in milliseconds
+            easing: 'easeOutQuad', // default
+          });
+        }
+      }}
+      onMouseLeave={() => {
+        if (device) {
+          device.scroll({
+            direction: 'up', // 'up' or 'down'
+            duration: 5000, // in milliseconds
+            easing: 'easeOutQuad', // default
+          });
+        }
+      }}
+    />
   );
 }
