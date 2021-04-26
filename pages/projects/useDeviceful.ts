@@ -38,10 +38,10 @@ function useDeviceful(type: DevicefulType, project: Project | undefined) {
     if (device) {
       device.mount();
       // device.open();
-      device.swivel({
-        to: -30, // in degrees
-        duration: 1000, // in milliseconds
-      });
+      // device.swivel({
+      //   to: -30, // in degrees
+      //   duration: 1000, // in milliseconds
+      // });
       //   return () => {
       //     device.unmount();
       //   };

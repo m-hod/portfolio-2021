@@ -2,6 +2,7 @@ import { DevicefulType, Project as ProjectType } from 'res/types';
 import React, { useEffect, useMemo, useState } from 'react';
 
 import Page from 'components/page';
+import RaisedCard from 'components/RaisedCard';
 import classes from './project.module.scss';
 import { projects } from 'res/data';
 import useDeviceful from 'pages/projects/useDeviceful';
@@ -34,14 +35,30 @@ export default function Project() {
 
   return (
     <Page>
-      <div className="h-screen w-full">
-        <div className={classes.grid}>
+      <div className="h-screen w-full flex items-center justify-between relative">
+        <div className="h-screen-75 w-screen-25 z-10">
+          <RaisedCard>
+            <h2>About</h2>
+          </RaisedCard>
+        </div>
+        <div
+          className={`${classes.device} absolute w-full hover:scale-110 transition-all`}
+        >
+          <DevicefulWrapper project={project} device={laptop} type="laptop" />
+        </div>
+        <div className="h-screen-75 w-screen-25 z-10">
+          <RaisedCard>
+            <h2>About</h2>
+          </RaisedCard>
+        </div>
+
+        {/* <div className={classes.grid}>
           <div className={classes.logo} />
           <div className={classes.header} />
           <div className={classes.content} />
           <div className={classes.device}>
             <div className="w-full h-full flex justify-end items-end">
-              {/* <DevicefulWrapper project={project} device={phone} type="phone" /> */}
+               <DevicefulWrapper project={project} device={phone} type="phone" /> 
               <DevicefulWrapper
                 project={project}
                 device={laptop}
@@ -49,7 +66,7 @@ export default function Project() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </Page>
   );
@@ -67,7 +84,7 @@ function DevicefulWrapper({
   return (
     <div
       id={`${type}-${project.id}`}
-      className={'w-full h-screen-25 sm:h-screen-50 md:h-screen-75'}
+      className={`w-full h-screen-25 sm:h-screen-50 ${classes.x}`}
       onMouseEnter={() => {
         if (device) {
           device.scroll({

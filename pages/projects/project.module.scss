@@ -41,3 +41,22 @@
   height: 75vh;
   width: 100%;
 }
+
+.device {
+  z-index: 0;
+  &:hover {
+    z-index: 20;
+  }
+}
+
+.x {
+  canvas {
+    @apply transition-transform;
+  }
+  &:hover {
+    canvas {
+      transform: scale(1.25);
+      // @apply scale-125;
+    }
+  }
+}

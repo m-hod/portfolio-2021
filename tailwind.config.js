@@ -8,6 +8,9 @@ module.exports = {
         'screen-50': '50vh',
         'screen-25': '25vh',
       },
+      width: {
+        'screen-25': '25vw',
+      },
     },
   },
   variants: {
