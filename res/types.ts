@@ -2,17 +2,11 @@ export type Project = {
   id: number;
   title: string;
   type: 'web' | 'mobile';
-  icon: string;
-  url: string;
-  images: {
-    web?: DevicefulImage;
-    mobile?: DevicefulImage;
-  };
+  logo: string;
+  website?: string;
+  codebase?: string;
+  tech: string[];
+  displayImage: string;
+  status: 'in-progress' | 'completed' | 'published';
+  description: string;
 };
-
-export type DevicefulImage = {
-  url: string;
-  height: number;
-};
-
-export type DevicefulType = 'laptop' | 'phone';

@@ -12,7 +12,6 @@
   "dependencies": {
     "autoprefixer": "^10.2.1",
     "clsx": "^1.1.1",
-    "deviceful": "^0.9.5",
     "next": "10.0.5",
     "postcss": "^8.2.4",
     "react": "17.0.1",
@@ -29,7 +28,6 @@
     "@types/react-transition-group": "^4.4.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
-    "copy-webpack-plugin": "6.4.1",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",

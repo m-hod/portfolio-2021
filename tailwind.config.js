@@ -10,6 +10,15 @@ module.exports = {
       },
       width: {
         'screen-25': '25vw',
+        'screen-40': '40vw',
+        'screen-50': '50vw',
+        'screen-75': '75vw',
+      },
+      minWidth: {
+        'screen-25': '25vw',
+        'screen-40': '40vw',
+        'screen-50': '50vw',
+        'screen-75': '75vw',
       },
     },
   },

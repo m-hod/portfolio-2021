@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Card from 'components/Card';
 import { ChevronDown } from 'react-feather';
+import HorizontalCarousel from 'components/HorizontalCarousel';
 import IconButton from 'components/IconButton';
 import Page from 'components/page';
 import classes from './index.module.scss';
@@ -172,12 +173,14 @@ export default function Home() {
         </div>
       </div>
       <div
-        className="h-screen flex justify-center items-center flex-wrap"
+        className="h-screen flex justify-center items-center"
         ref={scrollRef}
       >
-        {projects.map((_project) => (
-          <Card key={_project.id} {..._project} />
-        ))}
+        <HorizontalCarousel>
+          {projects.map((_project) => (
+            <Card key={_project.id} {..._project} />
+          ))}
+        </HorizontalCarousel>
       </div>
     </Page>
   );
