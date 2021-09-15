@@ -11,6 +11,9 @@ module.exports = {
       width: {
         'screen-25': '25vw',
       },
+      animation: {
+        'spin-slow': 'spin 20s linear infinite',
+      },
     },
   },
   variants: {

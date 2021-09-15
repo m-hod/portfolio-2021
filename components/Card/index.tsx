@@ -1,8 +1,9 @@
-import React from 'react';
-import { Project } from 'res/types';
 import { BsLaptop, BsPhone } from 'react-icons/bs';
+
 import { BiGlobe } from 'react-icons/bi';
 import Link from 'next/link';
+import { Project } from 'res/types';
+import React from 'react';
 
 export default function Card(props: Project) {
   return (
