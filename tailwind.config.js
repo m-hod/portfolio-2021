@@ -17,7 +17,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      height: ['hover'],
+      visibility: ['hover', 'group-hover'],
+    },
   },
   plugins: [],
 };

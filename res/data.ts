@@ -2,51 +2,52 @@ import { Project } from './types';
 
 export const projects: Project[] = [
   {
-    id: 1,
-    title: 'Aaron Hodges',
-    type: 'web',
-    icon: 'images/vercel.svg',
-    url: 'https://hopkinsmarketing.org',
-    images: {
-      web: {
-        url: '/images/a-hodges-web.png',
-        height: 4560,
-      },
-      mobile: {
-        url: '/images/a-hodges-mobile.png',
-        height: 6595,
-      },
-    },
+    title: 'Rocket Languages',
+    tech: ['React', 'Typescript', 'PHP', 'Laravel', 'Nextjs', 'SCSS'],
+    url: 'app.rocketlanguages.com',
+    description:
+      'Eos nobis et et. Beatae et dolorum beatae totam ut odio et. Inventore maiores omnis quasi quam laudantium velit numquam ut. Eaque praesentium numquam iure perferendis et. Dolor dolor magnam laudantium a cum. Doloribus modi eveniet vero.',
+    image_path: '/images/rocket.png',
   },
   {
-    id: 2,
+    title: 'Aaron Hodges Author',
+    tech: [
+      'React',
+      'Nextjs',
+      'Typescript',
+      'Strapi',
+      'Jamstack',
+      'Headless',
+      'Tailwindcss',
+    ],
+    url: 'https://aaronhodgesauthor.com',
+    description:
+      'Eos nobis et et. Beatae et dolorum beatae totam ut odio et. Inventore maiores omnis quasi quam laudantium velit numquam ut. Eaque praesentium numquam iure perferendis et. Dolor dolor magnam laudantium a cum. Doloribus modi eveniet vero.',
+    image_path: '/images/ahodges.png',
+  },
+  {
     title: 'Hopkins Marketing Group',
-    type: 'web',
-    icon: 'images/vercel.svg',
+    tech: [
+      'React',
+      'Nextjs',
+      'Typescript',
+      'Strapi',
+      'Jamstack',
+      'Headless',
+      'Tailwindcss',
+    ],
     url: 'https://hopkinsmarketing.org',
-    images: {
-      web: {
-        url: '/images/a-hodges-web.png',
-        height: 4560,
-      },
-      mobile: {
-        url: '/images/a-hodges-mobile.png',
-        height: 6595,
-      },
-    },
+    description:
+      'Eos nobis et et. Beatae et dolorum beatae totam ut odio et. Inventore maiores omnis quasi quam laudantium velit numquam ut. Eaque praesentium numquam iure perferendis et. Dolor dolor magnam laudantium a cum. Doloribus modi eveniet vero.',
+    image_path: '/images/hmg.png',
   },
   {
-    id: 3,
     title: 'Anipers',
-    type: 'mobile',
-    icon: 'images/vercel.svg',
-    url: 'https://hopkinsmarketing.org',
-    images: {
-      mobile: {
-        url: '/images/a-hodges-mobile.png',
-        height: 6595,
-      },
-    },
+    tech: ['React Native', 'Android', 'Typescript'],
+    url: 'https://github.com/m-hod/anipers',
+    description:
+      'Eos nobis et et. Beatae et dolorum beatae totam ut odio et. Inventore maiores omnis quasi quam laudantium velit numquam ut. Eaque praesentium numquam iure perferendis et. Dolor dolor magnam laudantium a cum. Doloribus modi eveniet vero.',
+    image_path: '/images/a-hodges-web.png',
   },
 ];
 

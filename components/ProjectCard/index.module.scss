@@ -1,0 +1,26 @@
+.description {
+  visibility: hidden;
+  max-height: 0;
+  margin-top: 0;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.background {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+.container {
+  &:hover {
+    .description {
+      visibility: visible;
+      max-height: 100px;
+      margin-top: 0.5rem;
+    }
+    .background {
+      filter: blur(0);
+    }
+  }
+}

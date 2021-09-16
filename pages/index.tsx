@@ -8,6 +8,7 @@ import Card from 'components/Card';
 import { ChevronDown } from 'react-feather';
 import IconButton from 'components/IconButton';
 import Page from 'components/page';
+import ProjectCard from 'components/ProjectCard';
 import classes from './index.module.scss';
 import clsx from 'clsx';
 import config from 'res/tailwind';
@@ -223,10 +224,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* {projects.map((_project) => (
-          <Card key={_project.id} {..._project} />
-        ))} */}
       </div>
       <div className="py-12 flex justify-center">
         <div className="max-w-6xl w-full">
@@ -235,6 +232,11 @@ export default function Home() {
             <AnimationContainer type="scroll">
               <hr />
             </AnimationContainer>
+          </div>
+          <div className="mt-8 flex flex-col">
+            {projects.map((_project, i) => (
+              <ProjectCard key={i} project={_project} />
+            ))}
           </div>
         </div>
       </div>
