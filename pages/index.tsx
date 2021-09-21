@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import AnimationContainer from 'components/AnimationContainer';
 import { CSSTransition } from 'react-transition-group';
-import Card from 'components/Card';
 import { ChevronDown } from 'react-feather';
 import IconButton from 'components/IconButton';
 import Page from 'components/page';

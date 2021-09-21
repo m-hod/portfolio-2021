@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { FaGithub, FaGlobe } from 'react-icons/fa';
 
 import AnimationContainer from 'components/AnimationContainer';
 import { Project } from 'res/types';
+import React from 'react';
 import classes from './index.module.scss';
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -12,15 +13,42 @@ export default function ProjectCard({ project }: { project: Project }) {
           className={`group h-56 hover:h-screen-50 w-full bg-center bg-cover shadow-md hover:shadow-xl transition-all cursor-pointer flex items-end relative ${classes.container}`}
         >
           <div className="w-full bg-black bg-opacity-50 p-2 flex flex-col justify-center">
-            <h4 className="text-lg text-white">{project.title}</h4>
-            <h4 className="text-white italic font-serif">
-              {project.tech.map((_tech, i) => (
-                <React.Fragment key={i}>{`${_tech}${
-                  i !== _tech.length - 1 ? ', ' : ''
-                }`}</React.Fragment>
-              ))}
-            </h4>
-            <p className={`text-white font-serif w-3/4 ${classes.description}`}>
+            <div className="flex justify-between">
+              <div>
+                <h4 className="text-lg text-white">{project.title}</h4>
+                <h4 className="text-white italic font-serif">
+                  {project.tech.map((_tech, i) => (
+                    <React.Fragment key={i}>{`${_tech}${
+                      i !== _tech.length - 1 && i !== project.tech.length - 1
+                        ? ', '
+                        : ''
+                    }`}</React.Fragment>
+                  ))}
+                </h4>
+              </div>
+              <div className="flex items-center">
+                <a
+                  className="mx-2 hover:opacity-75"
+                  href={project.url}
+                  target="_blank"
+                >
+                  <FaGlobe color="#FFF" size={24} />
+                </a>
+                {project.source && (
+                  <a
+                    className="mx-2 hover:opacity-75"
+                    href={project.source}
+                    target="_blank"
+                  >
+                    <FaGithub color="#FFF" size={24} />
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <p
+              className={`text-white font-serif md:w-3/4 ${classes.description}`}
+            >
               | &nbsp; {project.description}
             </p>
           </div>
@@ -36,74 +64,3 @@ export default function ProjectCard({ project }: { project: Project }) {
     </div>
   );
 }
-
-//
-// export default class Project extends Component {
-//   state = {
-//       isVisible: false,
-//       info: info,
-//       infoBanner: infoBanner,
-//       infoContainer: infoContainer,
-//       infoContent: `${infoContent} ${infoContent}__truncated`,
-//       icon: `${icon} ${icon}__flipped`
-//   }
-
-//   clickHandler = () => {
-//       if (!this.state.isVisible) {
-//           this.setState({
-//               isVisible: true,
-//               info: `${info} ${info}__large`,
-//               infoBanner: `${this.state.infoBanner} ${this.state.infoBanner}__large`,
-//               infoContainer: `${this.state.infoContainer} ${this.state.infoContainer}__large`,
-//               infoContent: infoContent,
-//               icon: icon
-//           })
-//       } else {
-//           this.setState({
-//               isVisible: false,
-//               info: info,
-//               infoBanner: infoBanner,
-//               infoContainer: infoContainer,
-//               infoContent: `${infoContent} ${infoContent}__truncated`,
-//               icon: `${icon} ${icon}__flipped`
-//           })
-//       }
-//   }
-
-//   render () {
-//       return (
-//           // <AnimationContainer project>
-//           <div className="project" style={{backgroundImage: `url(${this.props.image})`}}>
-//               <div className={this.state.infoBanner}></div>
-//               <div className={this.state.info}>
-//                   <div className={this.state.infoContainer}>
-//                       <h3 className="project--info__title">{this.props.title}</h3>
-//                           <p className={this.state.infoContent}>
-//                               <em>
-//                                   {this.props.stack}
-//                               </em>
-//                           </p>
-//                           {
-//                               this.state.isVisible &&
-//                                   <p className="project--info__content project--info__content__description">
-//                                       | &nbsp; {this.props.description}
-//                                   </p>
-//                           }
-//                   </div>
-//                   <div className="project--info__icons">
-//                       <button style={{padding: '0'}} onClick={this.clickHandler}>
-//                           <ExpandMoreIcon style={{fontSize: '35px'}} className={this.state.icon}/>
-//                       </button>
-//                       <a href={this.props.github} target="_blank" rel="noopener noreferrer">
-//                           <GitHubIcon style={{fontSize: '32px'}} className='project--info__icon'/>
-//                       </a>
-//                       <a href={this.props.web} target="_blank" rel="noopener noreferrer">
-//                           <LanguageIcon style={{fontSize: '35px'}} className='project--info__icon'/>
-//                       </a>
-//                   </div>
-//               </div>
-//           </div>
-//           // </AnimationContainer>
-//       )
-//   }
-// }

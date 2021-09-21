@@ -17,7 +17,21 @@
     .description {
       visibility: visible;
       max-height: 100px;
+      overflow: auto;
       margin-top: 0.5rem;
+      padding-right: 0.5rem;
+      scrollbar-color: #fafafa transparent;
+      scrollbar-width: thin;
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #fafafa;
+        border: 1px solid #fafafa;
+      }
     }
     .background {
       filter: blur(0);
