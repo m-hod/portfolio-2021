@@ -1,0 +1,40 @@
+.description {
+  visibility: hidden;
+  max-height: 0;
+  margin-top: 0;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.background {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+.container {
+  &:hover {
+    .description {
+      visibility: visible;
+      max-height: 100px;
+      overflow: auto;
+      margin-top: 0.5rem;
+      padding-right: 0.5rem;
+      scrollbar-color: #fafafa transparent;
+      scrollbar-width: thin;
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #fafafa;
+        border: 1px solid #fafafa;
+      }
+    }
+    .background {
+      filter: blur(0);
+    }
+  }
+}

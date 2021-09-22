@@ -20,10 +20,16 @@ module.exports = {
         'screen-50': '50vw',
         'screen-75': '75vw',
       },
+      animation: {
+        'spin-slow': 'spin 20s linear infinite',
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      height: ['hover'],
+      visibility: ['hover', 'group-hover'],
+    },
   },
   plugins: [],
 };

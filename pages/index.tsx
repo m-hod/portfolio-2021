@@ -2,12 +2,13 @@ import { extractTailwindBreakpoint, rand } from 'res/utils';
 import { projects, textPool } from 'res/data';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
+import AnimationContainer from 'components/AnimationContainer';
 import { CSSTransition } from 'react-transition-group';
-import Card from 'components/Card';
 import { ChevronDown } from 'react-feather';
 import HorizontalCarousel from 'components/HorizontalCarousel';
 import IconButton from 'components/IconButton';
 import Page from 'components/page';
+import ProjectCard from 'components/ProjectCard';
 import classes from './index.module.scss';
 import clsx from 'clsx';
 import config from 'res/tailwind';
@@ -101,9 +102,7 @@ export default function Home() {
               classNames="title-transition"
               unmountOnExit
             >
-              <h1 className="text-right text-5xl lg:text-7xl font-black">
-                {left[index]}
-              </h1>
+              <h1 className="text-right font-black">{left[index]}</h1>
             </CSSTransition>
           </div>
           <div
@@ -121,9 +120,7 @@ export default function Home() {
               classNames="title-transition"
               unmountOnExit
             >
-              <h1 className="text-left text-5xl lg:text-7xl font-black">
-                {right[index]}
-              </h1>
+              <h1 className="text-left font-black">{right[index]}</h1>
             </CSSTransition>
           </div>
         </div>
@@ -134,12 +131,10 @@ export default function Home() {
               subtitleVisibility && 'fade-and-slide-in--visible'
             )}
           >
-            <h3 className="text-center font-serif text-2xl md:text-3xl border-b-2 border-black pb-1 mb-2">
+            <h3 className="text-center border-b-2 border-black pb-1 mb-2">
               Michael Hodges
             </h3>
-            <h5 className="text-center font-serif text-base md:text-lg">
-              Fullstack Web Developer
-            </h5>
+            <h5 className="text-center">Fullstack Web Developer</h5>
           </div>
           <div className="h-3/6 flex justify-center items-center align-center">
             <div>
@@ -172,15 +167,78 @@ export default function Home() {
           <img src="logo_grayscale.png" style={{ maxHeight: '75%' }} />
         </div>
       </div>
-      <div
-        className="h-screen flex justify-center items-center"
-        ref={scrollRef}
-      >
-        <HorizontalCarousel>
-          {projects.map((_project) => (
-            <Card key={_project.id} {..._project} />
-          ))}
-        </HorizontalCarousel>
+      <div className="min-h-screen sm:h-screen" ref={scrollRef}>
+        <div className="py-12 h-full flex justify-center">
+          <div className="max-w-6xl h-full w-full flex flex-col justify-between">
+            <div className="mb-8">
+              <div className="w-min">
+                <h2>About</h2>
+                <AnimationContainer type="scroll">
+                  <hr />
+                </AnimationContainer>
+              </div>
+              <div className="my-4 w-full sm:w-9/12">
+                <AnimationContainer>
+                  <p>
+                    I am a full-stack developer with a special interest in
+                    decentralization, particularly to do with large-scale
+                    content distribution networks and the problems that come
+                    with the costly storage solutions these platforms rely upon.
+                    I am currently building upon my skills on both the front and
+                    back-end so that I can further explore this area in the
+                    hopes of contributing to or creating new open source
+                    solutions to the issue that also, importantly, provides a
+                    clean and easy to operate user experience to provide maximum
+                    accessibility to the average user.
+                  </p>
+                </AnimationContainer>
+              </div>
+            </div>
+            <div className="w-full flex justify-center">
+              <img
+                src="images/images_clip-art_Angelo_Gemmi_Angelo_Gemmi_geometric_motif.png"
+                alt="about"
+                className="w-1/2 sm:w-1/3 md:w-1/4 animate-spin-slow opacity-25"
+              />
+            </div>
+            <div className="mt-8 flex flex-col items-end text-right">
+              <div className="w-min">
+                <h2>Skills</h2>
+                <AnimationContainer type="scroll">
+                  <hr />
+                </AnimationContainer>
+              </div>
+              <div className="my-4 w-full sm:w-9/12">
+                <AnimationContainer>
+                  <p>
+                    I have experience building production applications from
+                    scratch, as well as maintaining enterprise productions, in
+                    React/Typescript and Nextjs, as well as mobile applications
+                    with React Native and recently, PWA's. I also have created
+                    my own Laravel backend for a project I am currently working
+                    on and maintain, update, and add new functionality to an
+                    enterprise backend system in the same stack.
+                  </p>
+                </AnimationContainer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="py-12 flex justify-center">
+        <div className="max-w-6xl w-full">
+          <div className="w-min">
+            <h2>Projects</h2>
+            <AnimationContainer type="scroll">
+              <hr />
+            </AnimationContainer>
+          </div>
+          <div className="mt-8 flex flex-col">
+            {projects.map((_project, i) => (
+              <ProjectCard key={i} project={_project} />
+            ))}
+          </div>
+        </div>
       </div>
     </Page>
   );
