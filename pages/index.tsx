@@ -210,13 +210,13 @@ export default function Home() {
               <div className="my-4 w-full sm:w-9/12">
                 <AnimationContainer>
                   <p>
-                    I am a full-stack web developer and am thus confident in my
-                    skills with technologies involved in both front-end and
-                    back-end, with my main areas of expertise currently being
-                    React and Node.js. I am also in the process of upskilling my
-                    knowledge of back-end technologies by learning C# and the
-                    .NET framework, and exploring further implementations of
-                    JavaScript like TypeScript.
+                    I have experience building production applications from
+                    scratch, as well as maintaining enterprise productions, in
+                    React/Typescript and Nextjs, as well as mobile applications
+                    with React Native and recently, PWA's. I also have created
+                    my own Laravel backend for a project I am currently working
+                    on and maintain, update, and add new functionality to an
+                    enterprise backend system in the same stack.
                   </p>
                 </AnimationContainer>
               </div>
